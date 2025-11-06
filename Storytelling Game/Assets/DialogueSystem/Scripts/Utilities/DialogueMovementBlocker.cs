@@ -53,8 +53,8 @@ public class DialogueMovementBlocker : MonoBehaviour
         if (autoFindCommon && (componentsToToggle == null || componentsToToggle.Count == 0))
         {
             // Try to auto-populate common components to toggle if present
-            var pc = GetComponent<PlayerController>();
-            if (pc != null) componentsToToggle.Add(pc);
+         //   var pc = GetComponent<PlayerController>();
+         //   if (pc != null) componentsToToggle.Add(pc);
 
 #if ENABLE_INPUT_SYSTEM
             if (playerInput == null)
