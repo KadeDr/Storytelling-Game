@@ -131,7 +131,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""name"": ""ChangeHoldDistance"",
                     ""type"": ""Value"",
                     ""id"": ""717bf3eb-a0ae-46f3-b4a1-d8363fed7b07"",
-                    ""expectedControlType"": ""Double"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true

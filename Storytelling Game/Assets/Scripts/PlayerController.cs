@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _pickupRange = 2f;
 
     [Header("Current State (Read-Only)")]
-    [ReadOnly] [SerializeField] private GameObject _heldItem;
+    [ReadOnly][SerializeField] private GameObject _heldItem;
     [ReadOnly][SerializeField] private float _heldItemDistance = 1f;
 
     private CharacterController _controller;
@@ -111,17 +111,25 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    
+    [SerializeField] private float _holdDistanceSpeed = 2f; // Adjustable sensitivity
 
     private void OnChangeHoldDistance(InputAction.CallbackContext ctx)
     {
-        float delta = ctx.ReadValue<float>();
-        _heldItemDistance = Mathf.Clamp(_heldItemDistance + delta, 0.5f, 3f);
+        if (_heldItem == null) return;
 
-        if (_heldItem != null)
-        {
-            _heldItem.transform.localPosition = new Vector3(0f, 0f, _heldItemDistance);
-        }
+        float scrollDelta = ctx.ReadValue<float>();
+
+        // Adjust distance with sensitivity and clamp
+        _heldItemDistance = Mathf.Clamp(
+            _heldItemDistance + scrollDelta * _holdDistanceSpeed * Time.deltaTime,
+            0.5f,
+            3f
+        );
+
+        _heldItem.transform.localPosition = new Vector3(0f, 0f, _heldItemDistance);
     }
+
 
     private void HandleMovement()
     {
