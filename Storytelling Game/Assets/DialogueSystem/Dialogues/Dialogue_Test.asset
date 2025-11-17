@@ -1,0 +1,376 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8273468075562914508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
+  m_Name: Node_3
+  m_EditorClassIdentifier: 
+  nodeId: 6f18eb3f-f2cb-4971-ad61-61226283371f
+  speakerName: '[System test]'
+  speakerCharacter: {fileID: 11400000, guid: 3d6741c5eb70a064cb92cc319d38af45, type: 2}
+  speakerExpression: Default
+  listenerCharacter: {fileID: 0}
+  listenerExpression: 
+  listenerIsSpeaker: 0
+  dialogueText: Yo, Horatio! You still awake, man?
+  choices: []
+  conditionalBranches: []
+  onEnterNode:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitNode:
+    m_PersistentCalls:
+      m_Calls: []
+  exitActions: []
+  nextNode: {fileID: 651152976425809040}
+  playback:
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    overrideWaitMode: 0
+    waitMode: 4
+    overrideAutoAdvance: 0
+    autoAdvance: 1
+    autoAdvanceDelay: 0.25
+    allowSkipAudio: 1
+    stopVoiceOnExit: 1
+    matchTypewriterToAudio: 0
+--- !u!114 &-7125655353445678769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
+  m_Name: Node_5
+  m_EditorClassIdentifier: 
+  nodeId: 42e29ca2-91b3-486c-90ea-1f9f4b735bb0
+  speakerName: '[System test]'
+  speakerCharacter: {fileID: 11400000, guid: 3d6741c5eb70a064cb92cc319d38af45, type: 2}
+  speakerExpression: Default
+  listenerCharacter: {fileID: 0}
+  listenerExpression: 
+  listenerIsSpeaker: 0
+  dialogueText: Yeah... I also hate when the ceiling talks to me. Very scary stuff.
+  choices: []
+  conditionalBranches: []
+  onEnterNode:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitNode:
+    m_PersistentCalls:
+      m_Calls: []
+  exitActions: []
+  nextNode: {fileID: 1346703596309137694}
+  playback:
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    overrideWaitMode: 0
+    waitMode: 4
+    overrideAutoAdvance: 0
+    autoAdvance: 1
+    autoAdvanceDelay: 0.25
+    allowSkipAudio: 1
+    stopVoiceOnExit: 1
+    matchTypewriterToAudio: 0
+--- !u!114 &-5086882038866545334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
+  m_Name: Node_7
+  m_EditorClassIdentifier: 
+  nodeId: bf611f6a-60d8-40a6-8633-7e6187e37e5e
+  speakerName: '[System test]'
+  speakerCharacter: {fileID: 11400000, guid: b0b55de9e88af204c8d3a0b92d8bd882, type: 2}
+  speakerExpression: Default
+  listenerCharacter: {fileID: 0}
+  listenerExpression: 
+  listenerIsSpeaker: 0
+  dialogueText: " \rNah, man. I'm good, I saw some weird stuff happenin' over in
+    the kitchen earlier. Wouldn't want you gettin' yourself in danger, now would
+    I?"
+  choices: []
+  conditionalBranches: []
+  onEnterNode:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitNode:
+    m_PersistentCalls:
+      m_Calls: []
+  exitActions: []
+  nextNode: {fileID: 0}
+  playback:
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    overrideWaitMode: 0
+    waitMode: 4
+    overrideAutoAdvance: 0
+    autoAdvance: 1
+    autoAdvanceDelay: 0.25
+    allowSkipAudio: 1
+    stopVoiceOnExit: 1
+    matchTypewriterToAudio: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09afc92a506d184c8c8e3fc2292ece4, type: 3}
+  m_Name: Dialogue_Test
+  m_EditorClassIdentifier: 
+  startNode: {fileID: 7517085111134693503}
+  nodes:
+  - {fileID: 7517085111134693503}
+  - {fileID: 983679510492787329}
+  - {fileID: -8273468075562914508}
+  - {fileID: 651152976425809040}
+  - {fileID: -7125655353445678769}
+  - {fileID: 1346703596309137694}
+  - {fileID: -5086882038866545334}
+  - {fileID: 6815668705349370472}
+  nodePositions:
+  - nodeId: 69319b1f-c7fa-4df1-96a3-0d9bf837de8d
+    position: {x: -62, y: -61}
+  - nodeId: 2aeca8e4-0263-4e52-afae-bad80ace9ff3
+    position: {x: 298, y: 70}
+  - nodeId: 6f18eb3f-f2cb-4971-ad61-61226283371f
+    position: {x: 624, y: 71}
+  - nodeId: 2ab9a4a2-c6cb-4208-b8f2-6161ec64c883
+    position: {x: 945, y: 74}
+  - nodeId: 42e29ca2-91b3-486c-90ea-1f9f4b735bb0
+    position: {x: 1275, y: 75}
+  - nodeId: 541401fb-7a7b-466f-8f85-86a0d460a6cd
+    position: {x: 1597, y: 74}
+  - nodeId: bf611f6a-60d8-40a6-8633-7e6187e37e5e
+    position: {x: 1929, y: 75}
+  - nodeId: 789961bd-ff94-411c-b5a0-8f04829c94a0
+    position: {x: 1647, y: 114}
+  defaultSpeaker: {fileID: 11400000, guid: 2e2f2806ad378b64592936327da2cd0f, type: 2}
+  defaultListener: {fileID: 0}
+  currentNode: {fileID: 0}
+--- !u!114 &651152976425809040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
+  m_Name: Node_4
+  m_EditorClassIdentifier: 
+  nodeId: 2ab9a4a2-c6cb-4208-b8f2-6161ec64c883
+  speakerName: '[System test]'
+  speakerCharacter: {fileID: 11400000, guid: b0b55de9e88af204c8d3a0b92d8bd882, type: 2}
+  speakerExpression: Default
+  listenerCharacter: {fileID: 0}
+  listenerExpression: 
+  listenerIsSpeaker: 0
+  dialogueText: Of course, dude. I wouldn't dare go to sleep yet... what if the ceiling
+    is listening again?
+  choices: []
+  conditionalBranches: []
+  onEnterNode:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitNode:
+    m_PersistentCalls:
+      m_Calls: []
+  exitActions: []
+  nextNode: {fileID: -7125655353445678769}
+  playback:
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    overrideWaitMode: 0
+    waitMode: 4
+    overrideAutoAdvance: 0
+    autoAdvance: 1
+    autoAdvanceDelay: 0.25
+    allowSkipAudio: 1
+    stopVoiceOnExit: 1
+    matchTypewriterToAudio: 0
+--- !u!114 &983679510492787329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
+  m_Name: Node_2
+  m_EditorClassIdentifier: 
+  nodeId: 2aeca8e4-0263-4e52-afae-bad80ace9ff3
+  speakerName: '[System test]'
+  speakerCharacter: {fileID: 11400000, guid: 2e2f2806ad378b64592936327da2cd0f, type: 2}
+  speakerExpression: Default
+  listenerCharacter: {fileID: 0}
+  listenerExpression: 
+  listenerIsSpeaker: 0
+  dialogueText: Here is a working example of dialouge from our script
+  choices: []
+  conditionalBranches: []
+  onEnterNode:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitNode:
+    m_PersistentCalls:
+      m_Calls: []
+  exitActions: []
+  nextNode: {fileID: -8273468075562914508}
+  playback:
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    overrideWaitMode: 0
+    waitMode: 4
+    overrideAutoAdvance: 0
+    autoAdvance: 1
+    autoAdvanceDelay: 0.25
+    allowSkipAudio: 1
+    stopVoiceOnExit: 1
+    matchTypewriterToAudio: 0
+--- !u!114 &1346703596309137694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
+  m_Name: Node_6
+  m_EditorClassIdentifier: 
+  nodeId: 541401fb-7a7b-466f-8f85-86a0d460a6cd
+  speakerName: '[System test]'
+  speakerCharacter: {fileID: 11400000, guid: 3d6741c5eb70a064cb92cc319d38af45, type: 2}
+  speakerExpression: Default
+  listenerCharacter: {fileID: 0}
+  listenerExpression: 
+  listenerIsSpeaker: 0
+  dialogueText: 'Well anyways, I''m bout to head to bed, I had a long day. You need
+    anything before I turn out the lights? '
+  choices: []
+  conditionalBranches: []
+  onEnterNode:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitNode:
+    m_PersistentCalls:
+      m_Calls: []
+  exitActions: []
+  nextNode: {fileID: -5086882038866545334}
+  playback:
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    overrideWaitMode: 0
+    waitMode: 4
+    overrideAutoAdvance: 0
+    autoAdvance: 1
+    autoAdvanceDelay: 0.25
+    allowSkipAudio: 1
+    stopVoiceOnExit: 1
+    matchTypewriterToAudio: 0
+--- !u!114 &6815668705349370472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
+  m_Name: Node_7
+  m_EditorClassIdentifier: 
+  nodeId: 789961bd-ff94-411c-b5a0-8f04829c94a0
+  speakerName: '[System test]'
+  speakerCharacter: {fileID: 11400000, guid: 2e2f2806ad378b64592936327da2cd0f, type: 2}
+  speakerExpression: Default
+  listenerCharacter: {fileID: 0}
+  listenerExpression: 
+  listenerIsSpeaker: 0
+  dialogueText: 
+  choices: []
+  conditionalBranches: []
+  onEnterNode:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitNode:
+    m_PersistentCalls:
+      m_Calls: []
+  exitActions: []
+  nextNode: {fileID: 0}
+  playback:
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    overrideWaitMode: 0
+    waitMode: 4
+    overrideAutoAdvance: 0
+    autoAdvance: 1
+    autoAdvanceDelay: 0.25
+    allowSkipAudio: 1
+    stopVoiceOnExit: 1
+    matchTypewriterToAudio: 0
+--- !u!114 &7517085111134693503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
+  m_Name: Node_0
+  m_EditorClassIdentifier: 
+  nodeId: 69319b1f-c7fa-4df1-96a3-0d9bf837de8d
+  speakerName: 
+  speakerCharacter: {fileID: 0}
+  speakerExpression: 
+  listenerCharacter: {fileID: 0}
+  listenerExpression: 
+  listenerIsSpeaker: 0
+  dialogueText: 
+  choices: []
+  conditionalBranches: []
+  onEnterNode:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitNode:
+    m_PersistentCalls:
+      m_Calls: []
+  exitActions: []
+  nextNode: {fileID: 0}
+  playback:
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    overrideWaitMode: 0
+    waitMode: 4
+    overrideAutoAdvance: 0
+    autoAdvance: 1
+    autoAdvanceDelay: 0.25
+    allowSkipAudio: 1
+    stopVoiceOnExit: 1
+    matchTypewriterToAudio: 0

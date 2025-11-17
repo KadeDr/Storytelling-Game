@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b397b86e69017d4eb35538964144725, type: 3}
+  m_Name: GameState
+  m_EditorClassIdentifier: 
+  onStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  root:
+    rid: 3662573596750643200
+  characters: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 3662573596750643200
+      type: {class: VariableGroup, ns: , asm: Assembly-CSharp}
+      data:
+        id: 6387300c-161b-42af-8194-e18539acd452
+        key: Root
+        displayName: Root
+        children:
+        - rid: 3662573596750643201
+        - rid: 3662573596750643202
+        - rid: 3662573596750643203
+    - rid: 3662573596750643201
+      type: {class: VariableGroup, ns: , asm: Assembly-CSharp}
+      data:
+        id: 3c00de69-c700-453f-ba3a-76eb7757dcc5
+        key: Quests
+        displayName: Quests
+        children: []
+    - rid: 3662573596750643202
+      type: {class: VariableGroup, ns: , asm: Assembly-CSharp}
+      data:
+        id: b109faf8-6278-4b12-a2ec-adf30d956772
+        key: Player
+        displayName: Player
+        children: []
+    - rid: 3662573596750643203
+      type: {class: VariableGroup, ns: , asm: Assembly-CSharp}
+      data:
+        id: 33023c31-eed8-4b3e-abda-302c7b56bcf3
+        key: Flags
+        displayName: Flags
+        children: []
