@@ -166,7 +166,7 @@ MonoBehaviour:
     position: {x: 1647, y: 114}
   defaultSpeaker: {fileID: 11400000, guid: 2e2f2806ad378b64592936327da2cd0f, type: 2}
   defaultListener: {fileID: 0}
-  currentNode: {fileID: 7517085111134693503}
+  currentNode: {fileID: -5086882038866545334}
 --- !u!114 &651152976425809040
 MonoBehaviour:
   m_ObjectHideFlags: 0
