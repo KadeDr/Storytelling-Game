@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Unity.Cinemachine;
+using System.Collections;
+using TMPro;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -19,6 +21,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _pickupRange = 2f;
     [SerializeField] private float _rotationSpeed = 100f; // Adjustable
     [SerializeField] private Transform _itemDefaultLocation;
+    [SerializeField] private TextMeshProUGUI _holdDistanceSensitivityText;
+    [SerializeField] private CanvasGroup _holdDistanceSensitivityGroup;
+    [SerializeField] private Vector3 _fadeInOffset = new Vector3(0f, -20f, 0f);
+    [SerializeField] private Vector3 _fadeOutOffset = new Vector3(0f, 10f, 0f); // slide a bit up when fading out
+    [SerializeField] private AnimationCurve _fadeOutCurve = AnimationCurve.EaseInOut(0f, 1f, 1f, 0f);
 
     [Header("Current State (Read-Only)")]
     [ReadOnly][SerializeField] private GameObject _heldItem;
@@ -30,6 +37,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _moveInput;
     private Vector2 _lookInput;
     private Vector2 _itemRotateInput;
+    private Vector3 _initialTextPosition;
 
     private float _yaw;   // Player rotation
     private float _pitch; // Camera rotation (up/down)
@@ -38,6 +46,21 @@ public class PlayerController : MonoBehaviour
 
     private bool _isShiftHeld;
     private bool _isRotatingItem = false;
+
+    Vector3 hiddenOffset = new Vector3(0f, -20f, 0f); // start 20 units below
+    Vector3 visiblePosition = new Vector3(0f, 0f, 0f);           // final position
+
+
+    private enum SensitivityTextState
+    {
+        Hidden,
+        FadingIn,
+        Visible,
+        FadingOut
+    }
+
+    private SensitivityTextState _textState = SensitivityTextState.Hidden;
+    private Coroutine _fadeCoroutine;
 
     private void Awake()
     {
@@ -59,7 +82,7 @@ public class PlayerController : MonoBehaviour
         _playerInputs.Player.Jump.performed += OnJump;
         _playerInputs.Player.PickUp.performed += OnPickUp;
         _playerInputs.Player.ChangeHoldDistance.performed += OnChangeHoldDistance;
-        _playerInputs.Player.ChangeHoldDistance.canceled += OnChangeHoldDistance;
+        // _playerInputs.Player.ChangeHoldDistance.canceled += OnChangeHoldDistance;
         _playerInputs.Player.Modifier.performed += OnModifierPerformed;
         _playerInputs.Player.Modifier.canceled += OnModifierCanceled;
         _playerInputs.Player.RotateModifier.performed += OnRotateModifierPressed;
@@ -83,7 +106,7 @@ public class PlayerController : MonoBehaviour
         _playerInputs.Player.Jump.performed -= OnJump;
         _playerInputs.Player.PickUp.performed -= OnPickUp;
         _playerInputs.Player.ChangeHoldDistance.performed -= OnChangeHoldDistance;
-        _playerInputs.Player.ChangeHoldDistance.canceled -= OnChangeHoldDistance;
+        // _playerInputs.Player.ChangeHoldDistance.canceled -= OnChangeHoldDistance;
         _playerInputs.Player.Modifier.performed -= OnModifierPerformed;
         _playerInputs.Player.Modifier.canceled -= OnModifierCanceled;
         _playerInputs.Player.RotateModifier.performed -= OnRotateModifierPressed;
@@ -96,12 +119,32 @@ public class PlayerController : MonoBehaviour
         _playerInputs.Player.Sprint.performed -= OnSprintPerformed;
         _playerInputs.Player.Sprint.canceled -= OnSprintCanceled;
 
+        if (_fadeCoroutine != null)
+        {
+            StopCoroutine(_fadeCoroutine);
+            _fadeCoroutine = null;
+        }
+
         _playerInputs.Player.Disable();
     }
 
     private void Start()
     {
+        _initialTextPosition = _holdDistanceSensitivityText.rectTransform.localPosition;
         _controller = GetComponent<CharacterController>();
+
+        if (_holdDistanceSensitivityGroup == null)
+        {
+            Debug.LogError("HoldDistanceSensitivityGroup not assigned!");
+        }
+        else
+        {
+            // Ensure text GameObject is active so CanvasGroup alpha works.
+            _holdDistanceSensitivityText.gameObject.SetActive(true);
+            _holdDistanceSensitivityGroup.alpha = 0f;
+            _holdDistanceSensitivityGroup.interactable = false;
+            _holdDistanceSensitivityGroup.blocksRaycasts = false;
+        }
     }
 
     private void Update()
@@ -163,45 +206,111 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnChangeHoldDistance(InputAction.CallbackContext ctx)
+    private float _visibleTimer = 0f;
+
+private void OnChangeHoldDistance(InputAction.CallbackContext ctx)
+{
+    float scrollDelta = ctx.ReadValue<float>();
+
+    if (_heldItem == null) return;
+
+    if (_isShiftHeld)
     {
-        float scrollDelta = ctx.ReadValue<float>();
+        // Adjust hold distance sensitivity
+        _holdDistanceSpeed = Mathf.Clamp(_holdDistanceSpeed + scrollDelta * 0.05f, 0.1f, 3f);
 
-        if (_heldItem == null) return;
+        _holdDistanceSensitivityText.text = $"Hold Distance Sensitivity: {_holdDistanceSpeed:F2} Kade's";
 
-        // Case 1: Shift held → adjust sensitivity
-        if (_isShiftHeld)
+        // Reset visible timer
+        _visibleTimer = 2f;
+
+        // Start the coroutine if not running
+        if (_fadeCoroutine == null)
         {
-            _holdDistanceSpeed = Mathf.Clamp(
-                _holdDistanceSpeed + scrollDelta * 0.05f, // tweak multiplier for sensitivity adjustment
-                0.1f,   // min sensitivity
-                3f      // max sensitivity
-            );
-
-            Debug.Log($"Hold distance sensitivity: {_holdDistanceSpeed:F2}");
-            return; // Don't move or rotate the item
+            _fadeCoroutine = StartCoroutine(FadeSensitivityTextSlideCurve());
         }
 
-        // Case 2: Alt held → rotate item around Z (roll)
-        if (_isRotatingItem)
+        return;
+    }
+
+    if (_isRotatingItem)
+    {
+        _heldItem.transform.Rotate(_cineCamera.transform.forward, scrollDelta * _rotationSpeed, Space.World);
+        return;
+    }
+
+    // Normal scroll → move item
+    _heldItemDistance = Mathf.Clamp(_heldItemDistance + scrollDelta * _holdDistanceSpeed, 0.5f, 3f);
+    _heldItem.transform.localPosition = new Vector3(0f, 0f, _heldItemDistance);
+}
+
+private IEnumerator FadeSensitivityTextSlideCurve(float fadeTime = 0.25f)
+{
+    _textState = SensitivityTextState.FadingIn;
+    RectTransform rt = _holdDistanceSensitivityText.rectTransform;
+
+    _holdDistanceSensitivityText.gameObject.SetActive(true);
+
+    Vector3 startPos = _initialTextPosition + _fadeInOffset;
+    Vector3 endPos = _initialTextPosition;
+
+    float t = 0f;
+    while (t < fadeTime)
+    {
+        t += Time.deltaTime;
+        float alpha = Mathf.Lerp(_holdDistanceSensitivityGroup.alpha, 1f, t / fadeTime);
+        _holdDistanceSensitivityGroup.alpha = alpha;
+        rt.localPosition = Vector3.Lerp(startPos, endPos, t / fadeTime);
+        yield return null;
+    }
+
+    _holdDistanceSensitivityGroup.alpha = 1f;
+    rt.localPosition = endPos;
+    _textState = SensitivityTextState.Visible;
+
+    // Keep visible while _visibleTimer > 0
+    while (_visibleTimer > 0f)
+    {
+        _visibleTimer -= Time.deltaTime;
+        yield return null;
+    }
+
+    _textState = SensitivityTextState.FadingOut;
+
+    // Fade-out using curve + slide up
+    t = 0f;
+    Vector3 fadeOutStart = rt.localPosition;
+    Vector3 fadeOutEnd = _initialTextPosition + _fadeOutOffset;
+
+    while (t < fadeTime)
+    {
+        t += Time.deltaTime;
+        float alpha = _fadeOutCurve.Evaluate(t / fadeTime);
+        _holdDistanceSensitivityGroup.alpha = alpha;
+        rt.localPosition = Vector3.Lerp(fadeOutStart, fadeOutEnd, t / fadeTime);
+        yield return null;
+    }
+
+    _holdDistanceSensitivityGroup.alpha = 0f;
+    rt.localPosition = _initialTextPosition;
+    _textState = SensitivityTextState.Hidden;
+    _fadeCoroutine = null;
+}
+
+
+    // Coroutine to keep the text visible without moving it
+    private IEnumerator KeepTextVisible(float duration)
+    {
+        _textState = SensitivityTextState.Visible;
+        float elapsed = 0f;
+        while (elapsed < duration)
         {
-            // Rotate roll (around camera's forward)
-            _heldItem.transform.Rotate(
-                _cineCamera.transform.forward,
-                scrollDelta * _rotationSpeed,
-                Space.World
-            );
-            return; // Skip distance adjustment
+            elapsed += Time.deltaTime;
+            yield return null;
         }
 
-        // Case 3: Normal scroll → move item closer/further
-        _heldItemDistance = Mathf.Clamp(
-            _heldItemDistance + scrollDelta * _holdDistanceSpeed,
-            0.5f,
-            3f
-        );
-
-        _heldItem.transform.localPosition = new Vector3(0f, 0f, _heldItemDistance);
+        // After timer, fade out normally
+        _fadeCoroutine = StartCoroutine(FadeSensitivityTextSlideCurve(0f));
     }
 
 
@@ -290,9 +399,69 @@ public class PlayerController : MonoBehaviour
     {
         _moveSpeed = _initialMoveSpeed * _sprintMultiplier;
     }
-    
+
     private void OnSprintCanceled(InputAction.CallbackContext ctx)
     {
         _moveSpeed = _initialMoveSpeed;
+    }
+
+    // --------------------
+    // Coroutines
+    // --------------------
+
+    private IEnumerator FadeSensitivityTextSlideCurve(float visibleDuration, float fadeTime = 0.25f)
+    {
+        _textState = SensitivityTextState.FadingIn;
+
+        _holdDistanceSensitivityText.gameObject.SetActive(true);
+        RectTransform rt = _holdDistanceSensitivityText.rectTransform;
+
+        // Base position = where the text normally sits in the UI
+        Vector3 basePos = _initialTextPosition;
+
+        // Start slightly below for fade-in
+        Vector3 startPos = basePos + _fadeInOffset;
+        Vector3 endPos = basePos;
+
+        float startAlpha = _holdDistanceSensitivityGroup.alpha;
+        float t = 0f;
+
+        // Fade-in + slide
+        while (t < fadeTime)
+        {
+            t += Time.deltaTime;
+            float alpha = Mathf.Lerp(startAlpha, 1f, t / fadeTime);
+            _holdDistanceSensitivityGroup.alpha = alpha;
+            rt.localPosition = Vector3.Lerp(startPos, endPos, t / fadeTime);
+            yield return null;
+        }
+
+        _holdDistanceSensitivityGroup.alpha = 1f;
+        rt.localPosition = endPos;
+        _textState = SensitivityTextState.Visible;
+
+        // Stay visible
+        yield return new WaitForSeconds(visibleDuration);
+
+        _textState = SensitivityTextState.FadingOut;
+
+        // Fade-out using curve + slide up
+        t = 0f;
+        Vector3 fadeOutStart = rt.localPosition;
+        Vector3 fadeOutEnd = basePos + _fadeOutOffset;
+
+        while (t < fadeTime)
+        {
+            t += Time.deltaTime;
+            float alpha = _fadeOutCurve.Evaluate(t / fadeTime);
+            _holdDistanceSensitivityGroup.alpha = alpha;
+            rt.localPosition = Vector3.Lerp(fadeOutStart, fadeOutEnd, t / fadeTime);
+            yield return null;
+        }
+
+        _holdDistanceSensitivityGroup.alpha = 0f;
+        rt.localPosition = basePos;
+        _textState = SensitivityTextState.Hidden;
+        _fadeCoroutine = null;
     }
 }
