@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     [ReadOnly][SerializeField] private float _holdDistanceSpeed = 0.2f; // Adjustable sensitivity
     [ReadOnly][SerializeField] private float _moveSpeed = 5f;
 
-    private CharacterController _controller;
+    public CharacterController _controller;
     private Vector2 _moveInput;
     private Vector2 _lookInput;
     private Vector2 _itemRotateInput;
