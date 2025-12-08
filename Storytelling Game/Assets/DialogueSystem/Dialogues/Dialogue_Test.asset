@@ -125,6 +125,47 @@ MonoBehaviour:
     allowSkipAudio: 1
     stopVoiceOnExit: 1
     matchTypewriterToAudio: 0
+--- !u!114 &-282755751023388111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
+  m_Name: Node_8
+  m_EditorClassIdentifier: 
+  nodeId: ec941624-be27-43b6-a9c0-3da4f2fcc98b
+  speakerName: '[System test]'
+  speakerCharacter: {fileID: 11400000, guid: 2e2f2806ad378b64592936327da2cd0f, type: 2}
+  speakerExpression: Default
+  listenerCharacter: {fileID: 0}
+  listenerExpression: 
+  listenerIsSpeaker: 0
+  dialogueText: 
+  choices: []
+  conditionalBranches: []
+  onEnterNode:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitNode:
+    m_PersistentCalls:
+      m_Calls: []
+  exitActions: []
+  nextNode: {fileID: 0}
+  playback:
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    overrideWaitMode: 0
+    waitMode: 4
+    overrideAutoAdvance: 0
+    autoAdvance: 1
+    autoAdvanceDelay: 0.25
+    allowSkipAudio: 1
+    stopVoiceOnExit: 1
+    matchTypewriterToAudio: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +188,7 @@ MonoBehaviour:
   - {fileID: 1346703596309137694}
   - {fileID: -5086882038866545334}
   - {fileID: 6815668705349370472}
+  - {fileID: -282755751023388111}
   nodePositions:
   - nodeId: 69319b1f-c7fa-4df1-96a3-0d9bf837de8d
     position: {x: 29, y: 70}
@@ -164,6 +206,8 @@ MonoBehaviour:
     position: {x: 1929, y: 75}
   - nodeId: 789961bd-ff94-411c-b5a0-8f04829c94a0
     position: {x: 1647, y: 114}
+  - nodeId: ec941624-be27-43b6-a9c0-3da4f2fcc98b
+    position: {x: 2756, y: 800}
   defaultSpeaker: {fileID: 11400000, guid: 2e2f2806ad378b64592936327da2cd0f, type: 2}
   defaultListener: {fileID: 0}
   currentNode: {fileID: 7517085111134693503}

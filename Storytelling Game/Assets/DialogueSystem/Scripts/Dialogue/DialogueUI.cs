@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.IMGUI.Controls;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 /// <summary>
@@ -63,12 +65,39 @@ public class DialogueUI : MonoBehaviour
     // UI ready flag so external callers can wait until the UI is initialized
     public bool IsReady { get; private set; } = false;
 
+    private void OnEnable()
+    {
+        var mgr = DialogueManager.Instance;
+        if(mgr != null && mgr.progressDialogue != null)
+        {
+            var act = mgr.progressDialogue.action;
+            act.performed += OnProgressPerformed;
+            if (!act.enabled) act.Enable();
+        }
+    }
+
+    private void OnDisable()
+    {
+        var mgr = DialogueManager.Instance;
+        if (mgr != null && mgr.progressDialogue != null)
+        {
+            var act = mgr.progressDialogue.action;
+            act.performed -= OnProgressPerformed;
+            if (act.enabled) act.Disable();
+        }
+    }
+
+    void OnProgressPerformed(InputAction.CallbackContext ctx)
+    {
+        Advance();
+    }
+
     private void Awake()
     {
         IsReady = false;
         // Initialize UI without deactivating GameObject or invoking events to keep Editor inspectors stable
         InitializeHiddenState();
-        nextButton.onClick.AddListener(() => nextPressed = true);
+        nextButton.onClick.AddListener(Advance);
         // Ensure we have an AudioSource for voice. If not assigned, add one.
         if (voiceSource == null)
         {
@@ -586,6 +615,18 @@ public class DialogueUI : MonoBehaviour
     public void SkipTypewriter()
     {
         skipTypewriter = true;
+    }
+
+    public void Advance()
+    {
+        if (!IsTextFullyRevealed())
+        {
+            SkipTypewriter();
+        }
+        else
+        {
+            nextPressed = true;
+        }
     }
 
     public void ClearChoices()
