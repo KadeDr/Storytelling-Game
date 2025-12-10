@@ -45,6 +45,7 @@ public class DialogueManager : MonoBehaviour
     [Header("Debug")]
     public DialogueNode debugCurrentNode;
     public List<DialogueChoice> debugAvailableChoices;
+    public bool canJump = true;
 
     private void Awake()
     {
@@ -96,6 +97,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         onDialogueStart.Invoke();
+        canJump = false;
         StartCoroutine(RunNode());
     }
 
@@ -448,6 +450,7 @@ public class DialogueManager : MonoBehaviour
         {
             dialogueUI.onHideComplete.AddListener(HandleOnHideComplete);
             dialogueUI.Hide();
+            canJump = true;
 
             hideWaitingForComplete = true;
             if (hideFallbackCoroutine != null) StopCoroutine(hideFallbackCoroutine);

@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     [ReadOnly][SerializeField] private float _heldItemDistance = 1f;
     [ReadOnly][SerializeField] private float _holdDistanceSpeed = 0.2f; // Adjustable sensitivity
     [ReadOnly][SerializeField] private float _moveSpeed = 5f;
+    [ReadOnly][SerializeField] private bool canJump = true;
 
     private CharacterController _controller;
     private Vector2 _moveInput;
@@ -149,6 +150,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        canJump = DialogueManager.Instance.canJump;
         HandleMovement();
         HandleLook();
 
@@ -177,7 +179,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnJump(InputAction.CallbackContext ctx)
     {
-        if (_controller.isGrounded)
+        if (_controller.isGrounded && canJump)
         {
             _verticalVelocity = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
         }
