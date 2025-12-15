@@ -223,7 +223,7 @@ PrefabInstance:
     - target: {fileID: 2419165209200422319, guid: 659b5f93910062b428164b32be1d7a8a, type: 3}
       propertyPath: progressDialogue
       value: 
-      objectReference: {fileID: -7267945737390200178, guid: 3e049a4b1ac664b4da260802306ebefb, type: 3}
+      objectReference: {fileID: -2448029799993161092, guid: 3e049a4b1ac664b4da260802306ebefb, type: 3}
     - target: {fileID: 3858291575613480866, guid: 659b5f93910062b428164b32be1d7a8a, type: 3}
       propertyPath: m_Name
       value: 'DialogueManager '
@@ -870,6 +870,14 @@ PrefabInstance:
     - target: {fileID: 2633985680546643646, guid: 5a591151e50d41c44a7195f8ed6b9b5a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 15.659912
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842353535286687550, guid: 5a591151e50d41c44a7195f8ed6b9b5a, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842353535286687550, guid: 5a591151e50d41c44a7195f8ed6b9b5a, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5999306937040658200, guid: 5a591151e50d41c44a7195f8ed6b9b5a, type: 3}
       propertyPath: m_Pivot.x

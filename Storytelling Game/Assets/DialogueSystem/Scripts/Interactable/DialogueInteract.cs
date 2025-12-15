@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 #if ENABLE_INPUT_SYSTEM
@@ -139,7 +141,7 @@ public class DialogueInteract : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!use2D) return; // only run in 2D mode
-        
+
         if (triggerMode != TriggerMode.OnTriggerEnter && triggerMode != TriggerMode.ProximityAndPress) return;
         if (!IsValidPlayer(other.gameObject)) return;
 
@@ -150,6 +152,12 @@ public class DialogueInteract : MonoBehaviour
         {
             TriggerDialogue();
         }
+    }
+
+    private IEnumerator jumpTimer()
+    {
+        yield return new WaitForSeconds(0.1f);
+        playerTransform.GetComponent<Rigidbody>().isKinematic = false;
     }
 
     private void OnTriggerExit2D(Collider2D other)

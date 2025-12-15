@@ -189,15 +189,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ProgressDialogue"",
-                    ""type"": ""Button"",
-                    ""id"": ""019c5735-4c7b-4bba-b066-48f148cb8bad"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -409,17 +400,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bdbf74ca-ccf6-44e4-bab0-ed8bc65fa6eb"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ProgressDialogue"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -450,6 +430,34 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""DialogueSystem"",
+            ""id"": ""17183dca-7c3b-424e-ab45-844d2141198e"",
+            ""actions"": [
+                {
+                    ""name"": ""ProgressDialogue"",
+                    ""type"": ""Button"",
+                    ""id"": ""2a8c08a6-b2b7-460f-84e8-1d96e16c98fd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""21d01ab7-68ed-406a-ad51-f26ec5ae991c"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ProgressDialogue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -467,16 +475,19 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         m_Player_RotateRoll = m_Player.FindAction("RotateRoll", throwIfNotFound: true);
         m_Player_Drop = m_Player.FindAction("Drop", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
-        m_Player_ProgressDialogue = m_Player.FindAction("ProgressDialogue", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Newaction = m_UI.FindAction("New action", throwIfNotFound: true);
+        // DialogueSystem
+        m_DialogueSystem = asset.FindActionMap("DialogueSystem", throwIfNotFound: true);
+        m_DialogueSystem_ProgressDialogue = m_DialogueSystem.FindAction("ProgressDialogue", throwIfNotFound: true);
     }
 
     ~@PlayerInputs()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, PlayerInputs.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, PlayerInputs.UI.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_DialogueSystem.enabled, "This will cause a leak and performance issues, PlayerInputs.DialogueSystem.Disable() has not been called.");
     }
 
     /// <summary>
@@ -563,7 +574,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_RotateRoll;
     private readonly InputAction m_Player_Drop;
     private readonly InputAction m_Player_Sprint;
-    private readonly InputAction m_Player_ProgressDialogue;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -619,10 +629,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Sprint".
         /// </summary>
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/ProgressDialogue".
-        /// </summary>
-        public InputAction @ProgressDialogue => m_Wrapper.m_Player_ProgressDialogue;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -682,9 +688,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
-            @ProgressDialogue.started += instance.OnProgressDialogue;
-            @ProgressDialogue.performed += instance.OnProgressDialogue;
-            @ProgressDialogue.canceled += instance.OnProgressDialogue;
         }
 
         /// <summary>
@@ -729,9 +732,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
-            @ProgressDialogue.started -= instance.OnProgressDialogue;
-            @ProgressDialogue.performed -= instance.OnProgressDialogue;
-            @ProgressDialogue.canceled -= instance.OnProgressDialogue;
         }
 
         /// <summary>
@@ -861,6 +861,102 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="UIActions" /> instance referencing this action map.
     /// </summary>
     public UIActions @UI => new UIActions(this);
+
+    // DialogueSystem
+    private readonly InputActionMap m_DialogueSystem;
+    private List<IDialogueSystemActions> m_DialogueSystemActionsCallbackInterfaces = new List<IDialogueSystemActions>();
+    private readonly InputAction m_DialogueSystem_ProgressDialogue;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "DialogueSystem".
+    /// </summary>
+    public struct DialogueSystemActions
+    {
+        private @PlayerInputs m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public DialogueSystemActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "DialogueSystem/ProgressDialogue".
+        /// </summary>
+        public InputAction @ProgressDialogue => m_Wrapper.m_DialogueSystem_ProgressDialogue;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_DialogueSystem; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="DialogueSystemActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(DialogueSystemActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="DialogueSystemActions" />
+        public void AddCallbacks(IDialogueSystemActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DialogueSystemActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DialogueSystemActionsCallbackInterfaces.Add(instance);
+            @ProgressDialogue.started += instance.OnProgressDialogue;
+            @ProgressDialogue.performed += instance.OnProgressDialogue;
+            @ProgressDialogue.canceled += instance.OnProgressDialogue;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="DialogueSystemActions" />
+        private void UnregisterCallbacks(IDialogueSystemActions instance)
+        {
+            @ProgressDialogue.started -= instance.OnProgressDialogue;
+            @ProgressDialogue.performed -= instance.OnProgressDialogue;
+            @ProgressDialogue.canceled -= instance.OnProgressDialogue;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="DialogueSystemActions.UnregisterCallbacks(IDialogueSystemActions)" />.
+        /// </summary>
+        /// <seealso cref="DialogueSystemActions.UnregisterCallbacks(IDialogueSystemActions)" />
+        public void RemoveCallbacks(IDialogueSystemActions instance)
+        {
+            if (m_Wrapper.m_DialogueSystemActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="DialogueSystemActions.AddCallbacks(IDialogueSystemActions)" />
+        /// <seealso cref="DialogueSystemActions.RemoveCallbacks(IDialogueSystemActions)" />
+        /// <seealso cref="DialogueSystemActions.UnregisterCallbacks(IDialogueSystemActions)" />
+        public void SetCallbacks(IDialogueSystemActions instance)
+        {
+            foreach (var item in m_Wrapper.m_DialogueSystemActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_DialogueSystemActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="DialogueSystemActions" /> instance referencing this action map.
+    /// </summary>
+    public DialogueSystemActions @DialogueSystem => new DialogueSystemActions(this);
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player" which allows adding and removing callbacks.
     /// </summary>
@@ -945,13 +1041,6 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSprint(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "ProgressDialogue" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnProgressDialogue(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
@@ -967,5 +1056,20 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnNewaction(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "DialogueSystem" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="DialogueSystemActions.AddCallbacks(IDialogueSystemActions)" />
+    /// <seealso cref="DialogueSystemActions.RemoveCallbacks(IDialogueSystemActions)" />
+    public interface IDialogueSystemActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "ProgressDialogue" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnProgressDialogue(InputAction.CallbackContext context);
     }
 }

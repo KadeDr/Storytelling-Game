@@ -68,7 +68,7 @@ public class DialogueUI : MonoBehaviour
     private void OnEnable()
     {
         var mgr = DialogueManager.Instance;
-        if(mgr != null && mgr.progressDialogue != null)
+        if (mgr != null && mgr.progressDialogue != null)
         {
             var act = mgr.progressDialogue.action;
             act.performed += OnProgressPerformed;
@@ -139,6 +139,7 @@ public class DialogueUI : MonoBehaviour
         if (!gameObject.activeInHierarchy)
         {
             gameObject.SetActive(true);
+
             StartCoroutine(ShowDialogueDeferred(speaker, text, speakerSprite, listenerSprite));
             return;
         }
@@ -174,10 +175,10 @@ public class DialogueUI : MonoBehaviour
         skipTypewriter = false;
 
 
-    // Parse rich/custom tags (now returns multiple effect ranges)
-    RichTextParser.Parse(text, out string parsedText, out shakeRanges, out waveRanges, out pulseRanges, out gradientRanges);
-    // Log parsed ranges for debugging
-    //Debug.Log($"[DialogueUI] Parsed ranges: shake={shakeRanges?.Count ?? 0}, wave={waveRanges?.Count ?? 0}, pulse={pulseRanges?.Count ?? 0}, gradient={gradientRanges?.Count ?? 0}");
+        // Parse rich/custom tags (now returns multiple effect ranges)
+        RichTextParser.Parse(text, out string parsedText, out shakeRanges, out waveRanges, out pulseRanges, out gradientRanges);
+        // Log parsed ranges for debugging
+        //Debug.Log($"[DialogueUI] Parsed ranges: shake={shakeRanges?.Count ?? 0}, wave={waveRanges?.Count ?? 0}, pulse={pulseRanges?.Count ?? 0}, gradient={gradientRanges?.Count ?? 0}");
 
         // Set parsed text and start with zero visible characters to avoid partial tag rendering or flash
         dialogueText.text = parsedText;
@@ -186,8 +187,8 @@ public class DialogueUI : MonoBehaviour
         currentRevealCount = 0;
         //Debug.Log($"[DialogueUI] ShowDialogueInternal: parsed text set, totalChars={dialogueText.textInfo.characterCount}");
 
-    if (typewriterCoroutine != null) StopCoroutine(typewriterCoroutine);
-    typewriterCoroutine = StartCoroutine(TypeText(parsedText));
+        if (typewriterCoroutine != null) StopCoroutine(typewriterCoroutine);
+        typewriterCoroutine = StartCoroutine(TypeText(parsedText));
 
         // start unified effects coroutine if any ranges found
         bool hasAnyEffects = (shakeRanges != null && shakeRanges.Count > 0) ||
@@ -356,9 +357,9 @@ public class DialogueUI : MonoBehaviour
 
     private IEnumerator AnimateTextEffectsRoutine()
     {
-    // Give TMP a couple frames to settle its internal mesh data before we start mutating it.
-    yield return new WaitForEndOfFrame();
-    yield return null;
+        // Give TMP a couple frames to settle its internal mesh data before we start mutating it.
+        yield return new WaitForEndOfFrame();
+        yield return null;
         while (true)
         {
             // Give TMP one frame to generate text/mesh data after initialization/typewriter starts.
@@ -676,7 +677,7 @@ public class DialogueUI : MonoBehaviour
         // restore mesh to a clean state
         ResetMesh();
 
-    // clear ranges
+        // clear ranges
         currentRevealCount = 0;
         shakeRanges?.Clear();
         waveRanges?.Clear();
