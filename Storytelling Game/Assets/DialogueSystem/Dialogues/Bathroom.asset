@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-758902320132393550
+--- !u!114 &-8996713312056729232
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
-  m_Name: Node_2
+  m_Name: Node_3
   m_EditorClassIdentifier: 
-  nodeId: 98270df7-3012-4912-abb2-97b33fade12d
+  nodeId: 514ff7d1-a244-4777-beb0-ca6b929ede85
   speakerName: 
-  speakerCharacter: {fileID: 11400000, guid: 51b5afb08bf4f6947adf8cb7ef4d96fa, type: 2}
+  speakerCharacter: {fileID: 0}
   speakerExpression: 
-  listenerCharacter: {fileID: 11400000, guid: 3d6741c5eb70a064cb92cc319d38af45, type: 2}
+  listenerCharacter: {fileID: 0}
   listenerExpression: 
   listenerIsSpeaker: 0
-  dialogueText: I've been waiting for this for a very long time.
+  dialogueText: anyways...
   choices: []
   conditionalBranches: []
   onEnterNode:
@@ -29,7 +29,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   exitActions: []
-  nextNode: {fileID: 149041920342943275}
+  nextNode: {fileID: 6274899924241673014}
   playback:
     voiceClip: {fileID: 0}
     voiceVolume: 1
@@ -41,7 +41,7 @@ MonoBehaviour:
     allowSkipAudio: 1
     stopVoiceOnExit: 1
     matchTypewriterToAudio: 0
---- !u!114 &-199161927521645125
+--- !u!114 &-5012784647308603335
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -53,14 +53,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
   m_Name: Node_0
   m_EditorClassIdentifier: 
-  nodeId: 1ee075fe-b711-4d92-b9b0-f762aed51cb7
+  nodeId: 7c11300c-5998-432e-9df4-1768e8838c57
   speakerName: 
-  speakerCharacter: {fileID: 11400000, guid: 3d6741c5eb70a064cb92cc319d38af45, type: 2}
+  speakerCharacter: {fileID: 0}
   speakerExpression: 
   listenerCharacter: {fileID: 0}
   listenerExpression: 
   listenerIsSpeaker: 0
-  dialogueText: This paper has writing on it?
+  dialogueText: Ouch what a big a poo! Hope no one come comes in the bathroom for
+    their sake.
   choices: []
   conditionalBranches: []
   onEnterNode:
@@ -70,7 +71,48 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   exitActions: []
-  nextNode: {fileID: 8391974401482737844}
+  nextNode: {fileID: -4159581473441977164}
+  playback:
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    overrideWaitMode: 0
+    waitMode: 4
+    overrideAutoAdvance: 0
+    autoAdvance: 1
+    autoAdvanceDelay: 0.25
+    allowSkipAudio: 1
+    stopVoiceOnExit: 1
+    matchTypewriterToAudio: 0
+--- !u!114 &-4159581473441977164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
+  m_Name: Node_1
+  m_EditorClassIdentifier: 
+  nodeId: 68513038-de2c-40e7-9f30-c997f95c4098
+  speakerName: 
+  speakerCharacter: {fileID: 0}
+  speakerExpression: 
+  listenerCharacter: {fileID: 0}
+  listenerExpression: 
+  listenerIsSpeaker: 0
+  dialogueText: 'Or the building... '
+  choices: []
+  conditionalBranches: []
+  onEnterNode:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitNode:
+    m_PersistentCalls:
+      m_Calls: []
+  exitActions: []
+  nextNode: {fileID: 4998708150726713857}
   playback:
     voiceClip: {fileID: 0}
     voiceVolume: 1
@@ -92,33 +134,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a09afc92a506d184c8c8e3fc2292ece4, type: 3}
-  m_Name: Opening - Note1
+  m_Name: Bathroom
   m_EditorClassIdentifier: 
-  startNode: {fileID: -199161927521645125}
+  startNode: {fileID: -5012784647308603335}
   nodes:
-  - {fileID: -199161927521645125}
-  - {fileID: 8391974401482737844}
-  - {fileID: -758902320132393550}
-  - {fileID: 149041920342943275}
-  - {fileID: 406784017156437529}
-  - {fileID: 4097324706083741176}
+  - {fileID: -5012784647308603335}
+  - {fileID: -4159581473441977164}
+  - {fileID: 4998708150726713857}
+  - {fileID: -8996713312056729232}
+  - {fileID: 6274899924241673014}
   nodePositions:
-  - nodeId: 1ee075fe-b711-4d92-b9b0-f762aed51cb7
+  - nodeId: 7c11300c-5998-432e-9df4-1768e8838c57
     position: {x: 0, y: 0}
-  - nodeId: 72d0a376-a47b-4dc1-b7ec-186fdc90fef8
-    position: {x: 182, y: 0}
-  - nodeId: 98270df7-3012-4912-abb2-97b33fade12d
-    position: {x: 379, y: 0}
-  - nodeId: 8160fdf9-d2ce-434f-ab28-90882c316a89
-    position: {x: 554, y: 0}
-  - nodeId: 23d1f9b3-9b42-40b7-a220-92294ff37306
-    position: {x: 729, y: 0}
-  - nodeId: df13a669-30f2-4db8-ac7f-7fa864d0e467
-    position: {x: 1043, y: -6}
+  - nodeId: 68513038-de2c-40e7-9f30-c997f95c4098
+    position: {x: 350, y: 0}
+  - nodeId: 12358175-a02e-4c34-a8ed-0d720cebfd9a
+    position: {x: 653, y: 0}
+  - nodeId: 514ff7d1-a244-4777-beb0-ca6b929ede85
+    position: {x: 964, y: 0}
+  - nodeId: 185de580-b2ff-4922-a7fa-070227f94dc9
+    position: {x: 1267, y: 0}
   defaultSpeaker: {fileID: 0}
   defaultListener: {fileID: 0}
-  currentNode: {fileID: 4097324706083741176}
---- !u!114 &149041920342943275
+  currentNode: {fileID: 0}
+--- !u!114 &4998708150726713857
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,16 +167,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
-  m_Name: Node_3
+  m_Name: Node_2
   m_EditorClassIdentifier: 
-  nodeId: 8160fdf9-d2ce-434f-ab28-90882c316a89
+  nodeId: 12358175-a02e-4c34-a8ed-0d720cebfd9a
   speakerName: 
-  speakerCharacter: {fileID: 11400000, guid: 51b5afb08bf4f6947adf8cb7ef4d96fa, type: 2}
+  speakerCharacter: {fileID: 0}
   speakerExpression: 
-  listenerCharacter: {fileID: 11400000, guid: 3d6741c5eb70a064cb92cc319d38af45, type: 2}
+  listenerCharacter: {fileID: 0}
   listenerExpression: 
   listenerIsSpeaker: 0
-  dialogueText: Once again ive done it again. I am unstopable!
+  dialogueText: 'MWAH MWAH MWAH '
   choices: []
   conditionalBranches: []
   onEnterNode:
@@ -147,7 +186,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   exitActions: []
-  nextNode: {fileID: 406784017156437529}
+  nextNode: {fileID: -8996713312056729232}
   playback:
     voiceClip: {fileID: 0}
     voiceVolume: 1
@@ -159,7 +198,7 @@ MonoBehaviour:
     allowSkipAudio: 1
     stopVoiceOnExit: 1
     matchTypewriterToAudio: 0
---- !u!114 &406784017156437529
+--- !u!114 &6274899924241673014
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -171,57 +210,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
   m_Name: Node_4
   m_EditorClassIdentifier: 
-  nodeId: 23d1f9b3-9b42-40b7-a220-92294ff37306
-  speakerName: 
-  speakerCharacter: {fileID: 11400000, guid: 51b5afb08bf4f6947adf8cb7ef4d96fa, type: 2}
-  speakerExpression: 
-  listenerCharacter: {fileID: 11400000, guid: 3d6741c5eb70a064cb92cc319d38af45, type: 2}
-  listenerExpression: 
-  listenerIsSpeaker: 0
-  dialogueText: My rage fueled fire will follow you building to building until your
-    completely engulfed and sorched.
-  choices: []
-  conditionalBranches: []
-  onEnterNode:
-    m_PersistentCalls:
-      m_Calls: []
-  onExitNode:
-    m_PersistentCalls:
-      m_Calls: []
-  exitActions: []
-  nextNode: {fileID: 4097324706083741176}
-  playback:
-    voiceClip: {fileID: 0}
-    voiceVolume: 1
-    overrideWaitMode: 0
-    waitMode: 4
-    overrideAutoAdvance: 0
-    autoAdvance: 1
-    autoAdvanceDelay: 0.25
-    allowSkipAudio: 1
-    stopVoiceOnExit: 1
-    matchTypewriterToAudio: 0
---- !u!114 &4097324706083741176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
-  m_Name: Node_5
-  m_EditorClassIdentifier: 
-  nodeId: df13a669-30f2-4db8-ac7f-7fa864d0e467
+  nodeId: 185de580-b2ff-4922-a7fa-070227f94dc9
   speakerName: 
   speakerCharacter: {fileID: 0}
   speakerExpression: 
   listenerCharacter: {fileID: 0}
   listenerExpression: 
   listenerIsSpeaker: 0
-  dialogueText: Anyways I gotta poo. Let me find the bathroom before i burn this
-    place lol.
+  dialogueText: 'I should go get started i think I left my supplise in my room up
+    down the hall '
   choices: []
   conditionalBranches: []
   onEnterNode:
@@ -232,47 +229,6 @@ MonoBehaviour:
       m_Calls: []
   exitActions: []
   nextNode: {fileID: 0}
-  playback:
-    voiceClip: {fileID: 0}
-    voiceVolume: 1
-    overrideWaitMode: 0
-    waitMode: 4
-    overrideAutoAdvance: 0
-    autoAdvance: 1
-    autoAdvanceDelay: 0.25
-    allowSkipAudio: 1
-    stopVoiceOnExit: 1
-    matchTypewriterToAudio: 0
---- !u!114 &8391974401482737844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
-  m_Name: Node_1
-  m_EditorClassIdentifier: 
-  nodeId: 72d0a376-a47b-4dc1-b7ec-186fdc90fef8
-  speakerName: 
-  speakerCharacter: {fileID: 0}
-  speakerExpression: 
-  listenerCharacter: {fileID: 11400000, guid: 3d6741c5eb70a064cb92cc319d38af45, type: 2}
-  listenerExpression: 
-  listenerIsSpeaker: 0
-  dialogueText: 'You look closely at the note '
-  choices: []
-  conditionalBranches: []
-  onEnterNode:
-    m_PersistentCalls:
-      m_Calls: []
-  onExitNode:
-    m_PersistentCalls:
-      m_Calls: []
-  exitActions: []
-  nextNode: {fileID: -758902320132393550}
   playback:
     voiceClip: {fileID: 0}
     voiceVolume: 1

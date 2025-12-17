@@ -1,207 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-758902320132393550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
-  m_Name: Node_2
-  m_EditorClassIdentifier: 
-  nodeId: 98270df7-3012-4912-abb2-97b33fade12d
-  speakerName: 
-  speakerCharacter: {fileID: 11400000, guid: 51b5afb08bf4f6947adf8cb7ef4d96fa, type: 2}
-  speakerExpression: 
-  listenerCharacter: {fileID: 11400000, guid: 3d6741c5eb70a064cb92cc319d38af45, type: 2}
-  listenerExpression: 
-  listenerIsSpeaker: 0
-  dialogueText: I've been waiting for this for a very long time.
-  choices: []
-  conditionalBranches: []
-  onEnterNode:
-    m_PersistentCalls:
-      m_Calls: []
-  onExitNode:
-    m_PersistentCalls:
-      m_Calls: []
-  exitActions: []
-  nextNode: {fileID: 149041920342943275}
-  playback:
-    voiceClip: {fileID: 0}
-    voiceVolume: 1
-    overrideWaitMode: 0
-    waitMode: 4
-    overrideAutoAdvance: 0
-    autoAdvance: 1
-    autoAdvanceDelay: 0.25
-    allowSkipAudio: 1
-    stopVoiceOnExit: 1
-    matchTypewriterToAudio: 0
---- !u!114 &-199161927521645125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
-  m_Name: Node_0
-  m_EditorClassIdentifier: 
-  nodeId: 1ee075fe-b711-4d92-b9b0-f762aed51cb7
-  speakerName: 
-  speakerCharacter: {fileID: 11400000, guid: 3d6741c5eb70a064cb92cc319d38af45, type: 2}
-  speakerExpression: 
-  listenerCharacter: {fileID: 0}
-  listenerExpression: 
-  listenerIsSpeaker: 0
-  dialogueText: This paper has writing on it?
-  choices: []
-  conditionalBranches: []
-  onEnterNode:
-    m_PersistentCalls:
-      m_Calls: []
-  onExitNode:
-    m_PersistentCalls:
-      m_Calls: []
-  exitActions: []
-  nextNode: {fileID: 8391974401482737844}
-  playback:
-    voiceClip: {fileID: 0}
-    voiceVolume: 1
-    overrideWaitMode: 0
-    waitMode: 4
-    overrideAutoAdvance: 0
-    autoAdvance: 1
-    autoAdvanceDelay: 0.25
-    allowSkipAudio: 1
-    stopVoiceOnExit: 1
-    matchTypewriterToAudio: 0
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a09afc92a506d184c8c8e3fc2292ece4, type: 3}
-  m_Name: Opening - Note1
-  m_EditorClassIdentifier: 
-  startNode: {fileID: -199161927521645125}
-  nodes:
-  - {fileID: -199161927521645125}
-  - {fileID: 8391974401482737844}
-  - {fileID: -758902320132393550}
-  - {fileID: 149041920342943275}
-  - {fileID: 406784017156437529}
-  - {fileID: 4097324706083741176}
-  nodePositions:
-  - nodeId: 1ee075fe-b711-4d92-b9b0-f762aed51cb7
-    position: {x: 0, y: 0}
-  - nodeId: 72d0a376-a47b-4dc1-b7ec-186fdc90fef8
-    position: {x: 182, y: 0}
-  - nodeId: 98270df7-3012-4912-abb2-97b33fade12d
-    position: {x: 379, y: 0}
-  - nodeId: 8160fdf9-d2ce-434f-ab28-90882c316a89
-    position: {x: 554, y: 0}
-  - nodeId: 23d1f9b3-9b42-40b7-a220-92294ff37306
-    position: {x: 729, y: 0}
-  - nodeId: df13a669-30f2-4db8-ac7f-7fa864d0e467
-    position: {x: 1043, y: -6}
-  defaultSpeaker: {fileID: 0}
-  defaultListener: {fileID: 0}
-  currentNode: {fileID: 4097324706083741176}
---- !u!114 &149041920342943275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
-  m_Name: Node_3
-  m_EditorClassIdentifier: 
-  nodeId: 8160fdf9-d2ce-434f-ab28-90882c316a89
-  speakerName: 
-  speakerCharacter: {fileID: 11400000, guid: 51b5afb08bf4f6947adf8cb7ef4d96fa, type: 2}
-  speakerExpression: 
-  listenerCharacter: {fileID: 11400000, guid: 3d6741c5eb70a064cb92cc319d38af45, type: 2}
-  listenerExpression: 
-  listenerIsSpeaker: 0
-  dialogueText: Once again ive done it again. I am unstopable!
-  choices: []
-  conditionalBranches: []
-  onEnterNode:
-    m_PersistentCalls:
-      m_Calls: []
-  onExitNode:
-    m_PersistentCalls:
-      m_Calls: []
-  exitActions: []
-  nextNode: {fileID: 406784017156437529}
-  playback:
-    voiceClip: {fileID: 0}
-    voiceVolume: 1
-    overrideWaitMode: 0
-    waitMode: 4
-    overrideAutoAdvance: 0
-    autoAdvance: 1
-    autoAdvanceDelay: 0.25
-    allowSkipAudio: 1
-    stopVoiceOnExit: 1
-    matchTypewriterToAudio: 0
---- !u!114 &406784017156437529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
-  m_Name: Node_4
-  m_EditorClassIdentifier: 
-  nodeId: 23d1f9b3-9b42-40b7-a220-92294ff37306
-  speakerName: 
-  speakerCharacter: {fileID: 11400000, guid: 51b5afb08bf4f6947adf8cb7ef4d96fa, type: 2}
-  speakerExpression: 
-  listenerCharacter: {fileID: 11400000, guid: 3d6741c5eb70a064cb92cc319d38af45, type: 2}
-  listenerExpression: 
-  listenerIsSpeaker: 0
-  dialogueText: My rage fueled fire will follow you building to building until your
-    completely engulfed and sorched.
-  choices: []
-  conditionalBranches: []
-  onEnterNode:
-    m_PersistentCalls:
-      m_Calls: []
-  onExitNode:
-    m_PersistentCalls:
-      m_Calls: []
-  exitActions: []
-  nextNode: {fileID: 4097324706083741176}
-  playback:
-    voiceClip: {fileID: 0}
-    voiceVolume: 1
-    overrideWaitMode: 0
-    waitMode: 4
-    overrideAutoAdvance: 0
-    autoAdvance: 1
-    autoAdvanceDelay: 0.25
-    allowSkipAudio: 1
-    stopVoiceOnExit: 1
-    matchTypewriterToAudio: 0
---- !u!114 &4097324706083741176
+--- !u!114 &-8377927527767670969
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,15 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
   m_Name: Node_5
   m_EditorClassIdentifier: 
-  nodeId: df13a669-30f2-4db8-ac7f-7fa864d0e467
+  nodeId: b4c3b1bc-0ed2-4d73-a5a8-848ca1f99258
   speakerName: 
   speakerCharacter: {fileID: 0}
   speakerExpression: 
   listenerCharacter: {fileID: 0}
   listenerExpression: 
   listenerIsSpeaker: 0
-  dialogueText: Anyways I gotta poo. Let me find the bathroom before i burn this
-    place lol.
+  dialogueText: Now as i rise up to the top I hotpe the fire burns violently
   choices: []
   conditionalBranches: []
   onEnterNode:
@@ -243,7 +41,89 @@ MonoBehaviour:
     allowSkipAudio: 1
     stopVoiceOnExit: 1
     matchTypewriterToAudio: 0
---- !u!114 &8391974401482737844
+--- !u!114 &-7282126811593908552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
+  m_Name: Node_0
+  m_EditorClassIdentifier: 
+  nodeId: 67136018-640a-467e-8eac-f8179abed619
+  speakerName: 
+  speakerCharacter: {fileID: 0}
+  speakerExpression: 
+  listenerCharacter: {fileID: 0}
+  listenerExpression: 
+  listenerIsSpeaker: 0
+  dialogueText: 'Why I write:'
+  choices: []
+  conditionalBranches: []
+  onEnterNode:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitNode:
+    m_PersistentCalls:
+      m_Calls: []
+  exitActions: []
+  nextNode: {fileID: -606700987108312938}
+  playback:
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    overrideWaitMode: 0
+    waitMode: 4
+    overrideAutoAdvance: 0
+    autoAdvance: 1
+    autoAdvanceDelay: 0.25
+    allowSkipAudio: 1
+    stopVoiceOnExit: 1
+    matchTypewriterToAudio: 0
+--- !u!114 &-6064659948406426188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
+  m_Name: Node_3
+  m_EditorClassIdentifier: 
+  nodeId: 56342e85-1f2d-4249-b645-5f8134cce50d
+  speakerName: 
+  speakerCharacter: {fileID: 0}
+  speakerExpression: 
+  listenerCharacter: {fileID: 0}
+  listenerExpression: 
+  listenerIsSpeaker: 0
+  dialogueText: Out of anger and out of sonder
+  choices: []
+  conditionalBranches: []
+  onEnterNode:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitNode:
+    m_PersistentCalls:
+      m_Calls: []
+  exitActions: []
+  nextNode: {fileID: 555145185405440889}
+  playback:
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    overrideWaitMode: 0
+    waitMode: 4
+    overrideAutoAdvance: 0
+    autoAdvance: 1
+    autoAdvanceDelay: 0.25
+    allowSkipAudio: 1
+    stopVoiceOnExit: 1
+    matchTypewriterToAudio: 0
+--- !u!114 &-606700987108312938
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,14 +135,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
   m_Name: Node_1
   m_EditorClassIdentifier: 
-  nodeId: 72d0a376-a47b-4dc1-b7ec-186fdc90fef8
+  nodeId: c6a230d5-f697-4bf6-88b6-0cc3ca0aabad
   speakerName: 
   speakerCharacter: {fileID: 0}
   speakerExpression: 
-  listenerCharacter: {fileID: 11400000, guid: 3d6741c5eb70a064cb92cc319d38af45, type: 2}
+  listenerCharacter: {fileID: 0}
   listenerExpression: 
   listenerIsSpeaker: 0
-  dialogueText: 'You look closely at the note '
+  dialogueText: I write because my mind it wanders
   choices: []
   conditionalBranches: []
   onEnterNode:
@@ -272,7 +152,125 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   exitActions: []
-  nextNode: {fileID: -758902320132393550}
+  nextNode: {fileID: 7693166365705013248}
+  playback:
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    overrideWaitMode: 0
+    waitMode: 4
+    overrideAutoAdvance: 0
+    autoAdvance: 1
+    autoAdvanceDelay: 0.25
+    allowSkipAudio: 1
+    stopVoiceOnExit: 1
+    matchTypewriterToAudio: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09afc92a506d184c8c8e3fc2292ece4, type: 3}
+  m_Name: Trash
+  m_EditorClassIdentifier: 
+  startNode: {fileID: -7282126811593908552}
+  nodes:
+  - {fileID: -7282126811593908552}
+  - {fileID: -606700987108312938}
+  - {fileID: 7693166365705013248}
+  - {fileID: -6064659948406426188}
+  - {fileID: 555145185405440889}
+  - {fileID: -8377927527767670969}
+  nodePositions:
+  - nodeId: 67136018-640a-467e-8eac-f8179abed619
+    position: {x: 0, y: 0}
+  - nodeId: c6a230d5-f697-4bf6-88b6-0cc3ca0aabad
+    position: {x: 347, y: -2}
+  - nodeId: f44a63bb-d9d0-4aff-acc2-508c186948e2
+    position: {x: 665, y: 0}
+  - nodeId: 56342e85-1f2d-4249-b645-5f8134cce50d
+    position: {x: 1000, y: 0}
+  - nodeId: a1d30496-1b9d-4732-bbcc-a988abda0862
+    position: {x: 1350, y: 0}
+  - nodeId: b4c3b1bc-0ed2-4d73-a5a8-848ca1f99258
+    position: {x: 1700, y: 0}
+  defaultSpeaker: {fileID: 0}
+  defaultListener: {fileID: 0}
+  currentNode: {fileID: -6064659948406426188}
+--- !u!114 &555145185405440889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
+  m_Name: Node_4
+  m_EditorClassIdentifier: 
+  nodeId: a1d30496-1b9d-4732-bbcc-a988abda0862
+  speakerName: 
+  speakerCharacter: {fileID: 0}
+  speakerExpression: 
+  listenerCharacter: {fileID: 0}
+  listenerExpression: 
+  listenerIsSpeaker: 0
+  dialogueText: And ill send them all to the fire over yonder
+  choices: []
+  conditionalBranches: []
+  onEnterNode:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitNode:
+    m_PersistentCalls:
+      m_Calls: []
+  exitActions: []
+  nextNode: {fileID: -8377927527767670969}
+  playback:
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    overrideWaitMode: 0
+    waitMode: 4
+    overrideAutoAdvance: 0
+    autoAdvance: 1
+    autoAdvanceDelay: 0.25
+    allowSkipAudio: 1
+    stopVoiceOnExit: 1
+    matchTypewriterToAudio: 0
+--- !u!114 &7693166365705013248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
+  m_Name: Node_2
+  m_EditorClassIdentifier: 
+  nodeId: f44a63bb-d9d0-4aff-acc2-508c186948e2
+  speakerName: 
+  speakerCharacter: {fileID: 0}
+  speakerExpression: 
+  listenerCharacter: {fileID: 0}
+  listenerExpression: 
+  listenerIsSpeaker: 0
+  dialogueText: 'I have no more brain no more ponders '
+  choices: []
+  conditionalBranches: []
+  onEnterNode:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitNode:
+    m_PersistentCalls:
+      m_Calls: []
+  exitActions: []
+  nextNode: {fileID: -6064659948406426188}
   playback:
     voiceClip: {fileID: 0}
     voiceVolume: 1
