@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09afc92a506d184c8c8e3fc2292ece4, type: 3}
+  m_Name: End
+  m_EditorClassIdentifier: 
+  startNode: {fileID: 8770404494101530485}
+  nodes:
+  - {fileID: 8770404494101530485}
+  nodePositions:
+  - nodeId: 716c7cf3-db30-4317-8487-9d9738226bde
+    position: {x: 0, y: 0}
+  defaultSpeaker: {fileID: 0}
+  defaultListener: {fileID: 0}
+  currentNode: {fileID: 0}
+--- !u!114 &8770404494101530485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56786f136997c24fbfbd385cf153dd2, type: 3}
+  m_Name: Node_0
+  m_EditorClassIdentifier: 
+  nodeId: 716c7cf3-db30-4317-8487-9d9738226bde
+  speakerName: 
+  speakerCharacter: {fileID: 0}
+  speakerExpression: 
+  listenerCharacter: {fileID: 0}
+  listenerExpression: 
+  listenerIsSpeaker: 0
+  dialogueText: Goodbye....
+  choices: []
+  conditionalBranches: []
+  onEnterNode:
+    m_PersistentCalls:
+      m_Calls: []
+  onExitNode:
+    m_PersistentCalls:
+      m_Calls: []
+  exitActions: []
+  nextNode: {fileID: 0}
+  playback:
+    voiceClip: {fileID: 0}
+    voiceVolume: 1
+    overrideWaitMode: 0
+    waitMode: 4
+    overrideAutoAdvance: 0
+    autoAdvance: 1
+    autoAdvanceDelay: 0.25
+    allowSkipAudio: 1
+    stopVoiceOnExit: 1
+    matchTypewriterToAudio: 0

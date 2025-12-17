@@ -60,8 +60,8 @@ MonoBehaviour:
   listenerCharacter: {fileID: 0}
   listenerExpression: 
   listenerIsSpeaker: 0
-  dialogueText: Ouch what a big a poo! Hope no one come comes in the bathroom for
-    their sake.
+  dialogueText: Ouch what a big a poo! Hope no one comes in the bathroom for their
+    sake.
   choices: []
   conditionalBranches: []
   onEnterNode:
@@ -156,7 +156,7 @@ MonoBehaviour:
     position: {x: 1267, y: 0}
   defaultSpeaker: {fileID: 0}
   defaultListener: {fileID: 0}
-  currentNode: {fileID: 0}
+  currentNode: {fileID: 6274899924241673014}
 --- !u!114 &4998708150726713857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,8 +217,8 @@ MonoBehaviour:
   listenerCharacter: {fileID: 0}
   listenerExpression: 
   listenerIsSpeaker: 0
-  dialogueText: 'I should go get started i think I left my supplise in my room up
-    down the hall '
+  dialogueText: 'I should go get started i think I left my supplise in my room  down
+    the hall '
   choices: []
   conditionalBranches: []
   onEnterNode:

@@ -19,7 +19,7 @@ MonoBehaviour:
   listenerCharacter: {fileID: 0}
   listenerExpression: 
   listenerIsSpeaker: 0
-  dialogueText: Stupid Landlaord...
+  dialogueText: Stupid Landlord...
   choices: []
   conditionalBranches: []
   onEnterNode:
@@ -70,7 +70,7 @@ MonoBehaviour:
     position: {x: 959, y: 2}
   defaultSpeaker: {fileID: 0}
   defaultListener: {fileID: 0}
-  currentNode: {fileID: 0}
+  currentNode: {fileID: 1246950872851283840}
 --- !u!114 &372477208316970111
 MonoBehaviour:
   m_ObjectHideFlags: 0
